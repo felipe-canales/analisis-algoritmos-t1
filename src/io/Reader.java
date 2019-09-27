@@ -8,7 +8,7 @@ import java.io.RandomAccessFile;
 public class Reader {
 
     private RandomAccessFile reader;
-    int blockSize;
+    private int blockSize;
 
     public Reader(File file, int blockSize) throws FileNotFoundException {
         reader = new RandomAccessFile(file, "r");
