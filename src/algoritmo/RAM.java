@@ -6,6 +6,8 @@ import java.io.OptionalDataException;
 
 public class RAM implements Algoritmo {
 
+    private int[][] res;
+
     private byte[] getBytes(File palabra) {
         byte[] chars = {0};
         try {
@@ -36,19 +38,26 @@ public class RAM implements Algoritmo {
             for (int i = 1; i < w; i++) {
                 int izq = matrix[j-1][i] + 1;
                 int arr = matrix[j][i-1] + 1;
-                int diag = matrix[j-1][i-1] + 1 * (chars1[j-1] == chars2[i-1]? 0 : 1);
+                int diag = matrix[j-1][i-1] + (chars1[j-1] == chars2[i-1]? 0 : 1);
                 int min = izq < arr? izq : arr;
                 matrix[j][i] = min < diag? min : diag;
             }
-        }/*
-        for (int y = 0; y < h; y++) {
+        }
+
+        this.res = matrix;
+        return matrix[h-1][w-1];
+    }
+
+    public int imprimirMatriz(File palabra1, File palabra2) {
+        int r = resolver(palabra1, palabra2);
+        for (int[] re : res) {
             String s = "> ";
-            for (int x = 0; x < w; x++) {
-                s += String.valueOf(matrix[y][x]) + " ";
+            for (int x = 0; x < res[0].length; x++) {
+                s += String.valueOf(re[x]) + " ";
             }
             System.out.println(s + "<");
-        }*/
-        return matrix[h-1][w-1];
+        }
+        return r;
     }
 
 }
