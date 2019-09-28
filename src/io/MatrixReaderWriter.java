@@ -4,13 +4,13 @@ import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-public class ReaderWriter {
+public class MatrixReaderWriter {
 
     //private File file;
     private RandomAccessFile rw;
     private int blockSize;
 
-    public ReaderWriter(int blockSize) {
+    public MatrixReaderWriter(int blockSize) {
         File file = new File("mat.txt");
         try {
             file.createNewFile();

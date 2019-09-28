@@ -1,10 +1,4 @@
-import algoritmo.Algoritmo;
-import algoritmo.RAM;
-import io.Reader;
-import io.ReaderWriter;
-import palabras.Creador;
-
-import java.io.File;
+import io.MatrixReaderWriter;
 
 public class Main {
 
@@ -41,7 +35,7 @@ public class Main {
             String s = "%c %c %c %c";
             byte[] x = {'A', 'B', 'C', 'D'};
             byte[] z = {'X', 'Y', 'Z', 'W'};
-            ReaderWriter rw = new ReaderWriter(4);
+            MatrixReaderWriter rw = new MatrixReaderWriter(4);
             rw.write(0, x);
             rw.write(1, z);
             byte[] b1 = rw.read(1);
