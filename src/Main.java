@@ -1,4 +1,7 @@
+import algoritmo.RAM;
 import io.MatrixReaderWriter;
+
+import java.io.File;
 
 public class Main {
 
@@ -6,15 +9,15 @@ public class Main {
         /*      Testing word creation
         Creador creador = new Creador();
         File pal1 = creador.palabraPrueba();
-        */
+        /**/
 
-        /*      Testing RAM
+        /*      Testing RAM*/
         File pal1 = new File("p_t1.txt");
         File pal2 = new File("p_t2.txt");
 
         RAM a = new RAM();
         System.out.println(a.imprimirMatriz(pal1, pal2));
-         */
+         /**/
 
         /*      Testing Reader
         try {
@@ -28,9 +31,9 @@ public class Main {
             rw.close();
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }/**/
 
-        /*      Testing ReaderWriter*/
+        /*      Testing ReaderWriter
         try {
             String s = "%c %c %c %c";
             byte[] x = {'A', 'B', 'C', 'D'};
@@ -52,7 +55,7 @@ public class Main {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }/**/
 
 
     }

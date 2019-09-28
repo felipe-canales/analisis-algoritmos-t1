@@ -2,7 +2,6 @@ package algoritmo;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.OptionalDataException;
 
 public class RAM implements Algoritmo {
 
@@ -11,8 +10,9 @@ public class RAM implements Algoritmo {
     private byte[] getBytes(File palabra) {
         byte[] chars = {0};
         try {
-            FileInputStream read1 = new FileInputStream(palabra);
-            chars = read1.readAllBytes();
+            FileInputStream read = new FileInputStream(palabra);
+            chars = read.readAllBytes();
+            read.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(3);
