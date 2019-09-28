@@ -98,7 +98,6 @@ public class Adaptado extends AbstractAlgoritmoEnDisco {
                 arr = obtenerDeAnterior(i % getLargoBloque()) + 1;
                 min = izq < arr? izq : arr;
                 min = min < diag? min : diag;
-                //System.out.println(String.format("En %d %d\n i: %d, a: %d, d: %d", j, i, izq, arr, diag));
                 guardarEnActual(i % getLargoBloque(), min);
                 izq = min + 1;
                 diag = arr - 1 + compararLetras(i % getLargoBloque(), (j - 1) % getLargoBloque());
@@ -137,7 +136,6 @@ public class Adaptado extends AbstractAlgoritmoEnDisco {
     private int compararLetras(int x, int y) {
         byte char1 = bloques[Bloques.PALABRA_1.index][y];
         byte char2 = bloques[Bloques.PALABRA_2.index][x];
-        System.out.println(String.format("Letras %d = %c, %d = %c", y,char1, x,char2));
         return char1 == char2? 0 : 1;
     }
 }

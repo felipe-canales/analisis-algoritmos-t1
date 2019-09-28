@@ -16,7 +16,11 @@ public class Reader {
     }
 
     public byte[] read(int block) throws IOException {
-        byte[] blockData = new byte[this.blockSize];
+        return read(block, 1);
+    }
+
+    public byte[] read(int block, int amount) throws IOException {
+        byte[] blockData = new byte[this.blockSize * amount];
         // 1st block is 0
         reader.seek(blockSize * block);
         reader.read(blockData);

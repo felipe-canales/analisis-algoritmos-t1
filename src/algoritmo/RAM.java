@@ -7,6 +7,10 @@ public class RAM implements Algoritmo {
 
     private short[][] res;
 
+    public RAM () {
+        res = new short[2][0];
+    }
+
     private byte[] getBytes(File palabra) {
         byte[] chars = {0};
         try {
@@ -26,33 +30,58 @@ public class RAM implements Algoritmo {
         byte[] chars2 = getBytes(palabra2);
         int w = largo2 + 1;
         int h = largo1 + 1;
-        short[][] matrix = new short[2][w];
+        res = new short[2][w];
         // 1era fila
         for (int i = 1; i < w; i++) {
-            matrix[0][i] = (short)i;
+            res[0][i] = (short)i;
         }
         for (int j = 1; j < h; j++) {
             // 1era columna
-            matrix[1][0] = (short)j;
+            res[1][0] = (short)j;
             // Otras celdas
             for (int i = 1; i < w; i++) {
-                int izq = matrix[1][i-1] + 1;
-                int arr = matrix[0][i] + 1;
-                int diag = matrix[0][i-1] + (chars1[j-1] == chars2[i-1]? 0 : 1);
+                int izq = res[1][i-1] + 1;
+                int arr = res[0][i] + 1;
+                int diag = res[0][i-1] + (chars1[j-1] == chars2[i-1]? 0 : 1);
                 int min = izq < arr? izq : arr;
-                System.out.print(izq);
-                System.out.print(arr);
-                System.out.println(diag);
-                //System.out.println((String.format()));
-                matrix[1][i] = (short)(min < diag? min : diag);
+                res[1][i] = (short)(min < diag? min : diag);
             }
             // Cambio de filas
-            matrix[0] = matrix[1];
-            matrix[1] = new short[w];
+            res[0] = res[1];
+            res[1] = new short[w];
         }
 
-        this.res = matrix;
-        return matrix[0][largo2];
+        return res[0][largo2];
+    }
+
+    public short[] resolverSubtabla(short[] bordeSup, short[] bordeIzq,
+                                    byte[] substr1, int largo1,
+                                    byte[] substr2, int largo2) {
+        short temp = bordeSup[largo2 - 1];
+        res[0] = bordeSup;
+        res[1] = new short[largo2];
+        for (int j = 0; j < largo1; j++) {
+            int diag = bordeIzq[j];
+            int izq = bordeIzq[j + 1] + 1;
+            int arr, min;
+            for (int i = 0; i < largo2; i++) {
+                diag += (substr1[j] == substr2[i]? 0 : 1);
+                arr = res[0][i] + 1;
+                min = izq < arr? izq : arr;
+                min = min < diag? min : diag;
+                res[1][i] = (short)min;
+                izq = min + 1;
+                diag = arr - 1;
+            }
+            // Actualizar el borde vertical
+            bordeIzq[j] = temp;
+            temp = res[1][largo2 - 1];
+            // Cambio de filas
+            res[0] = res[1];
+            res[1] = new short[largo2];
+        }
+        bordeIzq[largo1] = temp;
+        return res[0];
     }
 
 }

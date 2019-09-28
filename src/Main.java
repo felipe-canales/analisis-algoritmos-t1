@@ -1,7 +1,9 @@
 import algoritmo.Adaptado;
 import algoritmo.Algoritmo;
+import algoritmo.Cuadrilla;
 import algoritmo.RAM;
 import io.MatrixReaderWriter;
+import palabras.Creador;
 
 import java.io.File;
 
@@ -10,23 +12,28 @@ public class Main {
     public static void main(String[] args) {
         /*      Testing word creation
         Creador creador = new Creador();
-        File pal1 = creador.palabraPrueba();
+        File created = creador.palabraCorta();
         /**/
 
-        /*      Testing RAM
-        File pal1 = new File("p_t1.txt");
-        File pal2 = new File("p_t2.txt");
+        /*      Testing RAM*/
+        File pal1 = new File("p_4262.txt");
+        File pal2 = new File("p_2721.txt");
+        int l1 = 4262;
+        int l2 = 2721;
 
         RAM a = new RAM();
-        System.out.println(a.resolver(pal1,6, pal2,6));
+        System.out.println(a.resolver(pal1, l1, pal2, l2));
          /**/
 
         /*      Testing Adaptado*/
-        File pal1 = new File("p_t1.txt");
-        File pal2 = new File("p_t2.txt");
+        Algoritmo adp = new Adaptado(20, 1024);
+        System.out.println(adp.resolver(pal1, l1, pal2, l2));
 
-        Algoritmo adp = new Adaptado(20, 3);
-        System.out.println(adp.resolver(pal1, 6, pal2,6));
+        /**/
+
+        /*      Testing Cuadrilla*/
+        Algoritmo cuad = new Cuadrilla(20, 5);
+        System.out.println(cuad.resolver(pal1, l1, pal2, l2));
 
         /**/
 
