@@ -6,7 +6,6 @@ import java.io.RandomAccessFile;
 
 public class MatrixReaderWriter {
 
-    //private File file;
     private RandomAccessFile rw;
     private int blockSize;
 
