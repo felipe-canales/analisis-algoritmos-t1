@@ -1,3 +1,5 @@
+import algoritmo.Adaptado;
+import algoritmo.Algoritmo;
 import algoritmo.RAM;
 import io.MatrixReaderWriter;
 
@@ -11,13 +13,22 @@ public class Main {
         File pal1 = creador.palabraPrueba();
         /**/
 
-        /*      Testing RAM*/
+        /*      Testing RAM
         File pal1 = new File("p_t1.txt");
         File pal2 = new File("p_t2.txt");
 
         RAM a = new RAM();
-        System.out.println(a.imprimirMatriz(pal1, pal2));
+        System.out.println(a.imprimirMatriz(pal1,6, pal2,6));
          /**/
+
+        /*      Testing Adaptado*/
+        File pal1 = new File("p_t1.txt");
+        File pal2 = new File("p_t2.txt");
+
+        Algoritmo adp = new Adaptado(20, 3);
+        System.out.println(adp.resolver(pal1, 6, pal2,6));
+
+        /**/
 
         /*      Testing Reader
         try {

@@ -7,9 +7,13 @@ import java.io.FileOutputStream;
 public class Creador {
 
     private Random rng;
+    private int largo;
+    private File palabra;
 
     public Creador() {
         this.rng = new Random();
+        this.palabra = null;
+        this.largo = 0;
     }
 
     private byte[] makeBytes(int size) {
@@ -21,7 +25,8 @@ public class Creador {
     }
 
     private File palabra(int largo) {
-        File palabra = new File(String.format("p_%d.txt", largo));
+        this.palabra = new File(String.format("p_%d.txt", largo));
+        this.largo = largo;
         FileOutputStream writer = null;
         try {
             palabra.createNewFile();
@@ -55,4 +60,11 @@ public class Creador {
         return palabra(16384 + rng.nextInt(49152));
     }
 
+    public File getPalabra() {
+        return palabra;
+    }
+
+    public int getLargo() {
+        return largo;
+    }
 }

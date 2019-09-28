@@ -11,7 +11,7 @@ public class Cuadrilla implements Algoritmo {
     }
 
     @Override
-    public int resolver(File palabra1, File palabra2) {
+    public int resolver(File palabra1, int largo1, File palabra2, int largo2) {
         return 0;
     }
 

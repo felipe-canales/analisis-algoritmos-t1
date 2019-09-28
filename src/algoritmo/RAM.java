@@ -21,11 +21,11 @@ public class RAM implements Algoritmo {
     }
 
     @Override
-    public int resolver(File palabra1, File palabra2) {
+    public int resolver(File palabra1, int largo1, File palabra2, int largo2) {
         byte[] chars1 = getBytes(palabra1);
         byte[] chars2 = getBytes(palabra2);
-        int w = chars2.length + 1;
-        int h = chars1.length + 1;
+        int w = largo2 + 1;
+        int h = largo1 + 1;
         int[][] matrix = new int[h][w];
         // 1era fila
         for (int i = 1; i < w; i++) {
@@ -45,11 +45,11 @@ public class RAM implements Algoritmo {
         }
 
         this.res = matrix;
-        return matrix[h-1][w-1];
+        return matrix[largo2][largo1];
     }
 
-    public int imprimirMatriz(File palabra1, File palabra2) {
-        int r = resolver(palabra1, palabra2);
+    public int imprimirMatriz(File palabra1, int largo1, File palabra2, int largo2) {
+        int r = resolver(palabra1, largo1, palabra2, largo2);
         for (int[] re : res) {
             String s = "> ";
             for (int x = 0; x < res[0].length; x++) {
