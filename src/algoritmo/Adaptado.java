@@ -124,8 +124,11 @@ public class Adaptado extends AbstractAlgoritmoEnDisco {
     }
 
     private int obtenerDeAnterior(int x) {
-        return (bloques[Bloques.ANTERIOR_U.index][x] << 8) +
-                bloques[Bloques.ANTERIOR_L.index][x];
+        int inf = bloques[Bloques.ANTERIOR_L.index][x];
+        if (inf < 0) inf += 256;
+        int sup = bloques[Bloques.ANTERIOR_U.index][x];
+        if (sup < 0) inf += 256;
+        return (sup << 8) + inf;
     }
 
     private int obtenerDeActual(int x) {

@@ -98,7 +98,9 @@ public class Cuadrilla extends AbstractAlgoritmoEnDisco {
                 System.exit(3);
             }
             for (int i = 0; i < getLargoBloque(); i++) {
-                int val = (supers[i] << 8) + infers[i];
+                int inf = infers[i] < 0? infers[i] + 256 : infers[i];
+                int sup = supers[i] < 0? supers[i] + 256 : supers[i];
+                int val = (sup << 8) + inf;
                 bordeHor[i + offset] = (short)val;
             }
         }

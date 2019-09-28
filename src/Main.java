@@ -20,19 +20,21 @@ public class Main {
         File pal2 = new File("p_2721.txt");
         int l1 = 4262;
         int l2 = 2721;
+        int b_n = 20;
+        int b_s = 1024;
 
         RAM a = new RAM();
         System.out.println(a.resolver(pal1, l1, pal2, l2));
          /**/
 
         /*      Testing Adaptado*/
-        Algoritmo adp = new Adaptado(20, 1024);
+        Algoritmo adp = new Adaptado(b_n, b_s);
         System.out.println(adp.resolver(pal1, l1, pal2, l2));
 
         /**/
 
         /*      Testing Cuadrilla*/
-        Algoritmo cuad = new Cuadrilla(20, 5);
+        Algoritmo cuad = new Cuadrilla(b_n, b_s);
         System.out.println(cuad.resolver(pal1, l1, pal2, l2));
 
         /**/
