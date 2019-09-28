@@ -13,15 +13,15 @@ public class Main {
         File pal1 = creador.palabraPrueba();
         /**/
 
-        /*      Testing RAM
+        /*      Testing RAM*/
         File pal1 = new File("p_t1.txt");
         File pal2 = new File("p_t2.txt");
 
         RAM a = new RAM();
-        System.out.println(a.imprimirMatriz(pal1,6, pal2,6));
+        System.out.println(a.resolver(pal1,6, pal2,6));
          /**/
 
-        /*      Testing Adaptado*/
+        /*      Testing Adaptado
         File pal1 = new File("p_t1.txt");
         File pal2 = new File("p_t2.txt");
 

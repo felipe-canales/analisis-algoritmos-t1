@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 
 public class RAM implements Algoritmo {
 
-    private int[][] res;
+    private short[][] res;
 
     private byte[] getBytes(File palabra) {
         byte[] chars = {0};
@@ -26,38 +26,33 @@ public class RAM implements Algoritmo {
         byte[] chars2 = getBytes(palabra2);
         int w = largo2 + 1;
         int h = largo1 + 1;
-        int[][] matrix = new int[h][w];
+        short[][] matrix = new short[2][w];
         // 1era fila
         for (int i = 1; i < w; i++) {
-            matrix[0][i] = i;
+            matrix[0][i] = (short)i;
         }
         for (int j = 1; j < h; j++) {
             // 1era columna
-            matrix[j][0] = j;
+            matrix[1][0] = (short)j;
             // Otras celdas
             for (int i = 1; i < w; i++) {
-                int izq = matrix[j-1][i] + 1;
-                int arr = matrix[j][i-1] + 1;
-                int diag = matrix[j-1][i-1] + (chars1[j-1] == chars2[i-1]? 0 : 1);
+                int izq = matrix[1][i-1] + 1;
+                int arr = matrix[0][i] + 1;
+                int diag = matrix[0][i-1] + (chars1[j-1] == chars2[i-1]? 0 : 1);
                 int min = izq < arr? izq : arr;
-                matrix[j][i] = min < diag? min : diag;
+                System.out.print(izq);
+                System.out.print(arr);
+                System.out.println(diag);
+                //System.out.println((String.format()));
+                matrix[1][i] = (short)(min < diag? min : diag);
             }
+            // Cambio de filas
+            matrix[0] = matrix[1];
+            matrix[1] = new short[w];
         }
 
         this.res = matrix;
-        return matrix[largo2][largo1];
-    }
-
-    public int imprimirMatriz(File palabra1, int largo1, File palabra2, int largo2) {
-        int r = resolver(palabra1, largo1, palabra2, largo2);
-        for (int[] re : res) {
-            String s = "> ";
-            for (int x = 0; x < res[0].length; x++) {
-                s += String.valueOf(re[x]) + " ";
-            }
-            System.out.println(s + "<");
-        }
-        return r;
+        return matrix[0][largo2];
     }
 
 }
