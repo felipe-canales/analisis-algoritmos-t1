@@ -10,14 +10,15 @@ import java.io.File;
 public class Main {
 
     public static void main(String[] args) {
-        /*      Testing word creation
+        /*      Testing word creation*/
         Creador creador = new Creador();
-        File created = creador.palabraCorta();
+        //File created = creador.palabraCorta();
+        File cl = creador.palabraLarga();
         /**/
 
         /*      Testing RAM*/
-        File pal1 = new File("p_4262.txt");
-        File pal2 = new File("p_2721.txt");
+        File pal1 = new File("p_40790.txt");
+        File pal2 = new File("p_46738.txt");
         int l1 = 4262;
         int l2 = 2721;
         int b_n = 20;

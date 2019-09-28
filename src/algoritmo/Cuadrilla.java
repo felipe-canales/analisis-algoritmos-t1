@@ -54,7 +54,8 @@ public class Cuadrilla extends AbstractAlgoritmoEnDisco {
                 guardarBordeInferior(i);
             }
         }
-        return bordeHor[(largo2 - 1) % (bloquesHor * getLargoBloque())];
+        int res = bordeHor[(largo2 - 1) % (bloquesHor * getLargoBloque())];
+        return (res >= 0? res : res + 65536);
     }
 
     private void guardarBordeInferior(int tabla) {
