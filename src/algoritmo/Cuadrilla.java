@@ -116,6 +116,7 @@ public class Cuadrilla extends AbstractAlgoritmoEnDisco {
 
     private void setBordeHor(int tabla_x) {
         int inicio = bloquesHor * getLargoBloque() * tabla_x + 1;
+        bordeHor = new short[bloquesHor * getLargoBloque()];
         for (int i = 0; i < bordeHor.length; i++) {
             bordeHor[i] = (short)(inicio + i);
         }

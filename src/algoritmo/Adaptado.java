@@ -27,7 +27,8 @@ public class Adaptado extends AbstractAlgoritmoEnDisco {
     }
 
     private int indiceBloqueEnArchivo(int x, int y, int factor) {
-        return 2 * (factor * y + x);
+        //return 2 * (factor * y + x);
+        return 2 * x;
     }
 
     // Guarda el bloque actual en disco
@@ -127,13 +128,16 @@ public class Adaptado extends AbstractAlgoritmoEnDisco {
         int inf = bloques[Bloques.ANTERIOR_L.index][x];
         if (inf < 0) inf += 256;
         int sup = bloques[Bloques.ANTERIOR_U.index][x];
-        if (sup < 0) inf += 256;
+        if (sup < 0) sup += 256;
         return (sup << 8) + inf;
     }
 
     private int obtenerDeActual(int x) {
-        return (bloques[Bloques.ACTUAL_U.index][x] << 8) +
-                bloques[Bloques.ACTUAL_L.index][x];
+        int inf = bloques[Bloques.ACTUAL_L.index][x];
+        if (inf < 0) inf += 256;
+        int sup = bloques[Bloques.ACTUAL_U.index][x];
+        if (sup < 0) sup += 256;
+        return (sup << 8) + inf;
     }
 
     private int compararLetras(int x, int y) {
